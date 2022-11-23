@@ -15,5 +15,20 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+# include <termios.h>
+# include <signal.h>
+# include <dirent.h>
+//# include <readline/history.h>
+//# include <readline/readline.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <sys/wait.h>
+# include <sys/stat.h>
+# include <sys/ioctl.h>
+# include <sys/time.h>
+# include <sys/resource.h>
 
 #endif
