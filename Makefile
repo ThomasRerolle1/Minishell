@@ -10,30 +10,42 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
-FOLDSRC = ./src/
+NAME= minishell
 
-NAME = minishell
+CC= gcc
 
-SRC = ms_main.c
+CFLAGS= -Wall -Wextra -Werror -g3 -fsanitize=address
 
-all = $(NAME)
+RM= rm -rf
 
-$(NAME) : $(FOLDSRC)$(SRC:%.c=%.o)
-	$(CC) $(CFLAGS) $^ -o $@
+FOLDSRC= ./src/
 
-%.o : $(FOLDSRC)%.c
+SRC= ms_main.c
+
+OBJS= $(FOLDSRC)$(SRC:.c=.o)
+
+UNAME = $(shell uname -s)
+ifeq ($(UNAME), Linux)
+	NPROC := $(shell nproc)
+	CC= clang
+else
+	NPROC := $(shell sysctl -n hw.ncpu)
+endif
+
+.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean :
-	$(RM) $(FOLDSRC)$(SRC:%.c=%.o)
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
 
-fclean : clean
+all: ${NAME}
+
+clean:
+	$(RM) $(OBJS)
+
+fclean: clean
 	$(RM) $(NAME)
 
-re : fclean all
+re: fclean all 
 
 .PHONY : all clean fclean re
-
