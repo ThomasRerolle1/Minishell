@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/11/23 16:06:44 by mravera          ###   ########.fr       */
+/*   Updated: 2022/11/24 14:58:09 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@
 # include <sys/ioctl.h>
 # include <sys/time.h>
 # include <sys/resource.h>
+# include "../Libft/libft.h"
 
 #endif
