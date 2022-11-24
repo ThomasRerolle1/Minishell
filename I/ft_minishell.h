@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/11/24 14:58:09 by mravera          ###   ########.fr       */
+/*   Updated: 2022/11/24 17:51:22 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,21 @@
 # include <sys/time.h>
 # include <sys/resource.h>
 # include "../Libft/libft.h"
+
+//parsing.c
+typedef struct s_command
+{
+	char	*command;
+	char	*options;
+	char	*arg;
+}	t_command;
+
+typedef struct s_admin
+{
+	t_command	*comlist;
+	char		*in;
+	char		*out;
+	char		*err;
+}	t_admin;
 
 #endif
