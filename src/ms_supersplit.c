@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:10:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/11/25 17:30:21 by mravera          ###   ########.fr       */
+/*   Updated: 2022/11/25 18:25:54 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 int	ms_isspace(int c)
 {
 	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
+}
+
+int	ms_issep(int c)
+{
+	if (c == '|' || c == '<' || c == '>')
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/11/25 11:36:48 by mravera          ###   ########.fr       */
+/*   Updated: 2022/11/25 18:36:44 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # include <sys/resource.h>
 # include "../Libft/libft.h"
 
-//parsing.c
+//parsing command table
 typedef struct s_command
 {
 	char	*command;
@@ -47,5 +47,9 @@ typedef struct s_admin
 	char		*out;
 	char		*err;
 }	t_admin;
+
+//ms_supersplit.c
+int	ms_issep(int c);
+int	ms_isspace(int c);
 
 #endif
