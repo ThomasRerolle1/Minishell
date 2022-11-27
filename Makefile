@@ -6,7 +6,7 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 17:19:45 by mravera           #+#    #+#              #
-#    Updated: 2022/11/27 13:30:10 by mravera          ###   ########.fr        #
+#    Updated: 2022/11/27 14:42:48 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ $(NAME) : $(OBJS)
 all : $(NAME)
 
 clean :
-	$(MAKE) clean -C Libft
 	$(RM) $(OBJS)
 
 fclean :
