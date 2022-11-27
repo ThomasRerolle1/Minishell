@@ -6,26 +6,20 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 17:19:45 by mravera           #+#    #+#              #
-#    Updated: 2022/11/25 18:45:41 by mravera          ###   ########.fr        #
+#    Updated: 2022/11/27 13:30:10 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
-
 CC = gcc
-
 CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-
 LIBS = -L Libft -lft
-
 RM = rm -rf
-
 FOLDSRC = ./src/
-
 SRC = ms_main.c \
 			ms_supersplit.c
 
-OBJS = (SRC:%.c=%.o)
+OBJS = $(addprefix $(FOLDSRC), $(SRC:.c=.o))
 
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
@@ -54,4 +48,6 @@ ffclean : clean
 
 re : fclean all 
 
-.PHONY : all clean fclean ffclean re
+fre :ffclean all
+
+.PHONY : all clean fclean ffclean re fre

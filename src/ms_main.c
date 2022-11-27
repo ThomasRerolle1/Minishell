@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/11/25 18:31:17 by mravera          ###   ########.fr       */
+/*   Updated: 2022/11/27 13:27:16 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	printf("test %d\n", ms_issep(argv[1][0]));
+	if (argc == 2)
+		printf("test %d\n", ms_issep(argv[1][0]));
 	return (0);
 }
