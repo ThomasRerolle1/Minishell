@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/11/30 16:49:52 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/01 17:12:28 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 //parsing command table
 typedef struct s_command
 {
-	char	*command;
+	char	**command;
 	char	*options;
 	char	*arg;
 }	t_command;
