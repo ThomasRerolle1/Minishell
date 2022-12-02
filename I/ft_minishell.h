@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/01 17:12:28 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/02 18:31:32 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <termios.h>
 # include <signal.h>
 # include <dirent.h>
-//# include <readline/history.h>
-//# include <readline/readline.h>
+# include <readline/history.h>
+# include <readline/readline.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -31,12 +31,12 @@
 # include <sys/time.h>
 # include <sys/resource.h>
 # include "../Libft/libft.h"
+//# include <editline/readline.h>
 
 //parsing command table
 typedef struct s_command
 {
-	char	**command;
-	char	*options;
+	char	*command;
 	char	*arg;
 }	t_command;
 
@@ -50,10 +50,12 @@ typedef struct s_admin
 }	t_admin;
 
 //ms_supersplit.c
-int	ms_supersplit(char *str, t_admin adm);
+int		ms_supersplit(char *str, t_admin *adm);
 
 //ms_utils.c
-int	ms_issep(int c);
-int	ms_isspace(int c);
+int		ms_issep(int c);
+int		ms_isspace(int c);
+int		ms_sizeof_word(char *str);
+void	free_chartab(char **tab);
 
 #endif

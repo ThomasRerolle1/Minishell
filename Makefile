@@ -6,14 +6,14 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 17:19:45 by mravera           #+#    #+#              #
-#    Updated: 2022/11/29 15:48:48 by mravera          ###   ########.fr        #
+#    Updated: 2022/12/02 18:31:55 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-LIBS = -L Libft -lft
+LIBS = -L Libft -lft -ledit
 RM = rm -rf
 FOLDSRC = ./src/
 SRC = ms_main.c \

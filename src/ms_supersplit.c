@@ -6,24 +6,14 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:10:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/11/30 15:01:07 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/02 18:35:37 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../I/ft_minishell.h"
 
-int	ms_supersplit(char *str, t_admin adm)
+int	ms_supersplit(char *str, t_admin *adm)
 {
-	int	i;
-
-	i = 0;
-	(void)adm;
-	while (str[i])
-	{
-		if (ms_isspace(str[i]))
-			i++;
-		if (ft_isprint(str[i]) && !ms_issep(str[i]))
-			return (0);
-	}
+	adm->comtab = ft_split(str, '|');
 	return (0);
 }
