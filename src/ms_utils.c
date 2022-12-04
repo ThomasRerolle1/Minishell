@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:45:22 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/02 18:15:28 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/04 19:32:11 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ms_sizeof_word(char *str)
 	return (i);
 }
 
-void	free_chartab(char **tab)
+void	ms_free_chartab(char **tab)
 {
 	size_t	i;
 

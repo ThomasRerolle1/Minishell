@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/02 18:31:32 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/04 19:42:49 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,34 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <unistd.h>
-# include <termios.h>
-# include <signal.h>
-# include <dirent.h>
+//# include <unistd.h>
+//# include <termios.h>
+//# include <signal.h>
+//# include <dirent.h>
 # include <readline/history.h>
 # include <readline/readline.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <sys/stat.h>
-# include <sys/ioctl.h>
-# include <sys/time.h>
-# include <sys/resource.h>
+//# include <sys/types.h>
+//# include <sys/stat.h>
+//# include <fcntl.h>
+//# include <sys/wait.h>
+//# include <sys/stat.h>
+//# include <sys/ioctl.h>
+//# include <sys/time.h>
+//# include <sys/resource.h>
 # include "../Libft/libft.h"
 //# include <editline/readline.h>
 
 //parsing command table
+/*
+-> char *command == commande demandee
+-> char **arg == liste des arguments demandes
+   |-->la fonction doit etre appelee une fois par argument
+-> char *options == options demandees
+*/
 typedef struct s_command
 {
 	char	*command;
-	char	*arg;
+	char	**arg;
 }	t_command;
 
 typedef struct s_admin
@@ -56,6 +62,10 @@ int		ms_supersplit(char *str, t_admin *adm);
 int		ms_issep(int c);
 int		ms_isspace(int c);
 int		ms_sizeof_word(char *str);
-void	free_chartab(char **tab);
+void	ms_free_chartab(char **tab);
+
+//builtins
+//ms_echo.c
+int		ms_echo(char **str);
 
 #endif
