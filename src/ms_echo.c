@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:29:39 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/04 20:20:24 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/06 17:14:15 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 Prend un tableau de string en entree, check si l'option -n est presente
 en premiere position dans le tableau puis ecrit sur la sortie standard chacune
 des trings du tableau separee par un espace.
+la repetition de -n est accepte ainsi que qu'un nombre arbitraire de n (ex: -nnnn).
 Un retour a la ligne est ajoute a la fin, sauf si l'option -n est detecte.
-Un '-' seul est ignore.
+Le premier '-' seul est ignore puis la fonction n'accepte plus d'option.
 */
 
 int	ms_echo(char **str)
@@ -25,17 +26,14 @@ int	ms_echo(char **str)
 	int	i;
 	int	opt;
 
-	i = 1;
+	i = 0;
 	opt = 0;
 	if (!str || !str[0])
 	{
 		write(1, "\n", 1);
 		return (1);
 	}
-	if (ft_strncmp(str[0], "-n", 3) == 0)
-		opt = 1;
-	if (ft_strncmp(str[0], "-n", 3) != 0 && ft_strncmp(str[0], "-", 3) != 0)
-		i = 0;
+	i = ms_pre_echo(str, &opt);
 	while (str[i])
 	{
 		ft_putstr_fd(str[i++], 1);
@@ -45,4 +43,28 @@ int	ms_echo(char **str)
 	if (opt == 0)
 		write(1, "\n", 1);
 	return (0);
+}
+
+int	ms_pre_echo(char **str, int *opt)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (!ft_strncmp(str[i], "-", 2))
+			return (i + 1);
+		j = 0;
+		if (str[i][j++] == '-')
+			while (str[i][j] && (str[i][j] == 'n'))
+				j++;
+		if (str[i][j] == '\0')
+			*opt = 1;
+		else
+			return (i);
+		i++;
+	}
+	return (i);
 }

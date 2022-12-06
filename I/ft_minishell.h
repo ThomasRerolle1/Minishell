@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/04 19:42:49 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:21:53 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void	ms_free_chartab(char **tab);
 //builtins
 //ms_echo.c
 int		ms_echo(char **str);
+int		ms_pre_echo(char **str, int *opt);
 
 #endif
