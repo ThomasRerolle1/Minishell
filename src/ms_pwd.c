@@ -1,58 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_utils.c                                         :+:      :+:    :+:   */
+/*   ms_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 15:45:22 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/07 17:31:57 by mravera          ###   ########.fr       */
+/*   Created: 2022/12/07 16:53:20 by mravera           #+#    #+#             */
+/*   Updated: 2022/12/07 17:36:52 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../I/ft_minishell.h"
 
-int	ms_isspace(int c)
+int	ms_pwd(char **str)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
+	char	*buffer;
+	size_t	siz;
+	size_t	max_siz;
+
+	if (ms_strlen_tab(str) != 0)
+	{
+		printf("pwd: too many arguments\n");
 		return (1);
+	}
+	siz = 50;
+	max_siz = 2048;
+	buffer = malloc((sizeof(char) * siz) + 1);
+	buffer[siz] = '\0';
+	while (getcwd(buffer, siz) == NULL && siz <= max_siz)
+	{
+		siz += 50;
+		free(buffer);
+		buffer = malloc((sizeof(char) * siz) + 1);
+		buffer[siz] = '\0';
+	}
+	printf("%s\n", buffer);
+	free(buffer);
 	return (0);
-}
-
-int	ms_issep(int c)
-{
-	if (c == '|' || c == '<' || c == '>')
-		return (1);
-	return (0);
-}
-
-int	ms_sizeof_word(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && (ms_isspace(str[i]) == 0))
-		i++;
-	return (i);
-}
-
-void	ms_free_chartab(char **tab)
-{
-	size_t	i;
-
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-	return ;
-}
-
-int	ms_strlen_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		i++;
-	return (i);
 }

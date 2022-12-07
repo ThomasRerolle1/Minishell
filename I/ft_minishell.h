@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/06 15:21:53 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/07 17:32:23 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,14 @@ int		ms_issep(int c);
 int		ms_isspace(int c);
 int		ms_sizeof_word(char *str);
 void	ms_free_chartab(char **tab);
+int		ms_strlen_tab(char **tab);
 
 //builtins
 //ms_echo.c
 int		ms_echo(char **str);
 int		ms_pre_echo(char **str, int *opt);
+
+//ms_pwd.c
+int		ms_pwd(char **str);
 
 #endif

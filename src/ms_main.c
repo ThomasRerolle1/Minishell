@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/07 14:59:52 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/07 17:41:42 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,20 @@ int	main(void)
 			buffer = NULL;
 		}
 		buffer = readline("MyPrompt$=>");
+		if (!ft_strncmp(buffer, "exit", 5))
+		{
+			free(buffer);
+			return (0);
+		}
 		if (buffer && *buffer)
 			add_history(buffer);
 		test = ft_split(buffer, ' ');
-		//while (test[i])
-			//printf("%s\n", test[i++]);
 		if (test[0] && strncmp(test[0], "echo", 5) == 0)
 			ms_echo(&test[1]);
+		else if (test[0] && strncmp(test[0], "pwd", 4) == 0)
+			ms_pwd(&test[1]);
 		ms_free_chartab(test);
 	}
+	free(buffer);
 	return (0);
 }

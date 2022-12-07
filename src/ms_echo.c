@@ -6,20 +6,19 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:29:39 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/07 14:59:28 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/07 17:26:27 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../I/ft_minishell.h"
 
-/*
-Prend un tableau de string en entree, check si l'option -n est presente
-en premiere position dans le tableau puis ecrit sur la sortie standard chacune
-des trings du tableau separee par un espace.
-la repetition de -n est accepte ainsi que qu'un nombre arbitraire de n (ex: -nnnn).
-Un retour a la ligne est ajoute a la fin, sauf si l'option -n est detecte.
-Le premier '-' seul est ignore puis la fonction n'accepte plus d'option.
-*/
+//Prend un tableau de string en entree, check si l'option -n est presente
+//en premiere position dans le tableau puis ecrit sur la sortie standard chacune
+//des trings du tableau separee par un espace.
+//la repetition de -n est accepte ainsi que qu'un nombre arbitraire de n.
+//Exemple (-nnn -n -n).
+//Un retour a la ligne est ajoute a la fin, sauf si l'option -n est detecte.
+//Le premier '-' seul est ignore puis la fonction n'accepte plus d'option.
 
 int	ms_echo(char **str)
 {
