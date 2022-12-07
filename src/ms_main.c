@@ -11,7 +11,9 @@
 /* ************************************************************************** */
 
 #include "../I/ft_minishell.h"
-
+#include <stdio.h>
+#include <stdlib.h>
+/*
 int	main(void)
 {
 	char	**tab;
@@ -41,4 +43,25 @@ int	main(void)
 		printf("$minishell_prompt> ");
 	}
 	return (0);
+}
+*/
+int	main(void)
+{
+	char	*buffer = NULL;
+	size_t	buffer_size = 2048;
+
+	buffer = (char *)malloc(sizeof(char) * buffer_size);
+	if (!buffer)
+	{
+		perror("Malloc failure");
+		return (EXIT_FAILURE);
+	}
+	write(1, "$> ", 3);
+	while (getline(&buffer, &buffer_size, stdin) > 0)
+	{
+		printf("cmd = %s\n", buffer);
+		write(1, "$> ", 3);
+	}
+	printf("Bye\n");
+	free(buffer);
 }
