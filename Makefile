@@ -6,7 +6,7 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 17:19:45 by mravera           #+#    #+#              #
-#    Updated: 2022/12/07 17:42:19 by mravera          ###   ########.fr        #
+#    Updated: 2022/12/07 18:42:42 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC = ms_main.c \
 			ms_supersplit.c \
 			ms_utils.c \
 			ms_echo.c \
-			ms_pwd.c
+			ms_pwd.c \
+			ms_cd.c
 
 OBJS = $(addprefix $(FOLDSRC), $(SRC:.c=.o))
 

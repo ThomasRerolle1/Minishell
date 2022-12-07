@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/07 17:41:42 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/07 18:46:21 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	main(void)
 			ms_echo(&test[1]);
 		else if (test[0] && strncmp(test[0], "pwd", 4) == 0)
 			ms_pwd(&test[1]);
+		else if (test[0] && strncmp(test[0], "cd", 3) == 0)
+			ms_cd(&test[1]);
 		ms_free_chartab(test);
 	}
 	free(buffer);

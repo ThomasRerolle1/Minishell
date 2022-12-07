@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/07 17:32:23 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/07 18:46:23 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-//# include <unistd.h>
+# include <unistd.h>
 //# include <termios.h>
 //# include <signal.h>
 //# include <dirent.h>
@@ -72,5 +72,8 @@ int		ms_pre_echo(char **str, int *opt);
 
 //ms_pwd.c
 int		ms_pwd(char **str);
+
+//ms_cd.c
+int		ms_cd(char **str);
 
 #endif
