@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:29:39 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/06 17:14:15 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/07 14:59:28 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,12 @@ int	ms_pre_echo(char **str, int *opt)
 		if (!ft_strncmp(str[i], "-", 2))
 			return (i + 1);
 		j = 0;
-		if (str[i][j++] == '-')
+		if (str[i][j] == '-')
+		{
+			j++;
 			while (str[i][j] && (str[i][j] == 'n'))
 				j++;
+		}
 		if (str[i][j] == '\0')
 			*opt = 1;
 		else

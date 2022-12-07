@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/04 20:14:04 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/07 14:59:52 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int	main(void)
 {
 	char	*buffer;
 	char	**test;
+	int		i;
 
 	buffer = NULL;
 	while (1)
 	{
+		i = 0;
 		if (buffer != NULL)
 		{
 			free(buffer);
@@ -32,6 +34,8 @@ int	main(void)
 		if (buffer && *buffer)
 			add_history(buffer);
 		test = ft_split(buffer, ' ');
+		//while (test[i])
+			//printf("%s\n", test[i++]);
 		if (test[0] && strncmp(test[0], "echo", 5) == 0)
 			ms_echo(&test[1]);
 		ms_free_chartab(test);
