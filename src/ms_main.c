@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/07 19:14:54 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/08 11:41:16 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(void)
 			free(buffer);
 			buffer = NULL;
 		}
-		buffer = readline("MyPrompt$=>");
+		buffer = readline("minishell$");
 		if (!ft_strncmp(buffer, "exit", 5))
 		{
 			free(buffer);
@@ -45,6 +45,8 @@ int	main(void)
 			ms_pwd(&test[1]);
 		else if (test[0] && strncmp(test[0], "cd", 3) == 0)
 			ms_cd(&test[1]);
+		else if (test[0])
+			printf("minishell: %s: command not found\n", test[0]);
 		ms_free_chartab(test);
 	}
 	free(buffer);

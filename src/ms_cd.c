@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:11:14 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/07 19:08:24 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/08 11:52:26 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ms_cd(char **str)
 		return (1);
 	if (chdir(str[0]) == -1)
 	{
-		perror("Error calling cd.\n");
+		perror(NULL);
 		return (1);
 	}
 	return (0);
