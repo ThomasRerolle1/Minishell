@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:29:39 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/07 17:26:27 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/08 15:24:32 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 //la repetition de -n est accepte ainsi que qu'un nombre arbitraire de n.
 //Exemple (-nnn -n -n).
 //Un retour a la ligne est ajoute a la fin, sauf si l'option -n est detecte.
+//ligne suivante fausse dans bash, vraie dans zsh.
 //Le premier '-' seul est ignore puis la fonction n'accepte plus d'option.
 
 int	ms_echo(char **str)
@@ -53,10 +54,8 @@ int	ms_pre_echo(char **str, int *opt)
 	j = 0;
 	while (str[i])
 	{
-		if (!ft_strncmp(str[i], "-", 2))
-			return (i + 1);
 		j = 0;
-		if (str[i][j] == '-')
+		if ((str[i][j] == '-') && (str[i][j + 1] == 'n'))
 		{
 			j++;
 			while (str[i][j] && (str[i][j] == 'n'))
