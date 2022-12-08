@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:53:20 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/08 15:24:34 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/08 15:26:51 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ int	ms_pwd(char **str)
 {
 	char	*buf;
 
-	if (ms_strlen_tab(str) != 0)
-	{
-		printf("pwd: too many arguments\n");
-		return (1);
-	}
+	(void)str;
 	buf = getcwd(NULL, 0);
 	if (buf == NULL)
 	{
