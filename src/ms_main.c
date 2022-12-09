@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/08 16:44:33 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/09 17:21:48 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 #include <readline/history.h>
 #include <readline/readline.h>
 
-int	main(void)
+int	main(int argc, char **argv, char **envp)
 {
 	char	*buffer;
-	char	**test;
 	int		i;
 
 	buffer = NULL;
+	(void)argc;
+	(void)argv;
+	while (*envp)
+		printf("%s\n", *envp++);
 	while (1)
 	{
 		i = 0;
@@ -38,17 +41,25 @@ int	main(void)
 		}
 		if (buffer && *buffer)
 			add_history(buffer);
-		test = ft_split(buffer, ' ');
-		if (test[0] && strncmp(test[0], "echo", 5) == 0)
-			ms_echo(&test[1]);
-		else if (test[0] && strncmp(test[0], "pwd", 4) == 0)
-			ms_pwd(&test[1]);
-		else if (test[0] && strncmp(test[0], "cd", 3) == 0)
-			ms_cd(&test[1]);
-		else if (test[0])
-			printf("minishell: %s: command not found\n", test[0]);
-		ms_free_chartab(test);
+		ms_builtin(buffer);
 	}
 	free(buffer);
 	return (0);
+}
+
+void	ms_builtin(char *com)
+{
+	char	**tab;
+
+	tab = ft_split(com, ' ');
+	if (tab[0] && strncmp(tab[0], "echo", 5) == 0)
+		ms_echo(&tab[1]);
+	else if (tab[0] && strncmp(tab[0], "pwd", 4) == 0)
+		ms_pwd(&tab[1]);
+	else if (tab[0] && strncmp(tab[0], "cd", 3) == 0)
+		ms_cd(&tab[1]);
+	else if (tab[0])
+		printf("minishell: %s: command not found\n", tab[0]);
+	ms_free_chartab(tab);
+	return ;
 }
