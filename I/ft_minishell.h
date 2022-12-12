@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/09 17:20:35 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:30:40 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ typedef struct s_admin
 	char		*in;
 	char		*out;
 	char		*err;
+	t_list		*env;
 }	t_admin;
 
-//ms_parsing.c
+//ms_main.c
+int		ms_prompt(t_admin *adm);
 void	ms_builtin(char *com);
 
 //ms_supersplit.c

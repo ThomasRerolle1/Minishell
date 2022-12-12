@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/09 17:21:48 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:34:19 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,36 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	char	*buffer;
-	int		i;
+	t_admin	*adm;
 
-	buffer = NULL;
+	adm = NULL;
+	(void)envp;
 	(void)argc;
 	(void)argv;
-	while (*envp)
-		printf("%s\n", *envp++);
-	while (1)
+	ms_prompt(adm);
+	return (0);
+}
+
+int	ms_prompt(t_admin *adm)
+{
+	char	*buffer;
+
+	(void)adm;
+	buffer = "oui";
+	while (ft_strncmp(buffer, "exit", 5))
 	{
-		i = 0;
 		if (buffer != NULL)
 		{
 			free(buffer);
 			buffer = NULL;
 		}
 		buffer = readline("minishell$");
-		if (!ft_strncmp(buffer, "exit", 5))
-		{
-			free(buffer);
-			return (0);
-		}
 		if (buffer && *buffer)
 			add_history(buffer);
 		ms_builtin(buffer);
 	}
 	free(buffer);
-	return (0);
+	return (1);
 }
 
 void	ms_builtin(char *com)
