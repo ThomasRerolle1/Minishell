@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/12 17:34:19 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:38:57 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	ms_prompt(t_admin *adm)
 	char	*buffer;
 
 	(void)adm;
-	buffer = "oui";
 	while (ft_strncmp(buffer, "exit", 5))
 	{
 		if (buffer != NULL)
