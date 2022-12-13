@@ -12,7 +12,7 @@
 
 NAME = minishell
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g#-g3 -fsanitize=address
 LIBS = -L Libft -L$(HOME)/.brew/opt/readline/lib -lft -ledit -lreadline
 RM = rm -rf
 FOLDSRC = ./src/
@@ -21,9 +21,13 @@ SRC = ms_main.c \
 			ms_utils.c \
 			ms_echo.c \
 			ms_pwd.c \
-			ms_cd.c
+			ms_cd.c\
+			ms_env.c
 
 OBJS = $(addprefix $(FOLDSRC), $(SRC:.c=.o))
+
+.o: %.c
+	$(CC) -Wall -Wextra -Werror -c -g3 -fsanitise=address $< -o $@
 
 UNAME = $(shell uname -s)
 
@@ -36,7 +40,8 @@ else
 endif
 
 $(NAME) : $(OBJS)
-	$(MAKE) -C Libft
+	#$(MAKE) -C Libft
+	$(MAKE) bonus -C Libft
 	$(CC) $(CFLAGS) $^ $(LIBS) -o $@
 
 all : $(NAME)

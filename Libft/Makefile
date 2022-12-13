@@ -13,7 +13,7 @@
 CC = gcc
 NAME = libft.a
 
-LIB_DIR = ./sources/
+LIB_DIR = sources/
 LIB_PRINTF = ./Printf_srcs/
 LIB_GNL = ./gnl_srcs/
 
@@ -52,7 +52,7 @@ CFILES_LIB = ft_atoi.c \
 	  ft_tolower.c \
 	  ft_toupper.c
 
-CFILES_BONUS = $(SRC_LIB) \
+CFILES_BONUS = $(CFILES_LIB) \
 			ft_lstnew.c \
 			ft_lstsize.c \
 			ft_lstadd_front.c \
