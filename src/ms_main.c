@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/12 17:38:57 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/13 14:59:50 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ int	main(int argc, char **argv, char **envp)
 int	ms_prompt(t_admin *adm, char **envp)
 {
 	char	*buffer;
-	
-	buffer = malloc(1);
-	buffer[0] = 0;
+
+	buffer = NULL;
 	(void)adm;
-	while (ft_strncmp(buffer, "exit", 5))
+	while (1)
 	{
 		if (buffer != NULL)
 		{
@@ -47,13 +46,25 @@ int	ms_prompt(t_admin *adm, char **envp)
 		buffer = readline("minishell$");
 		if (buffer && *buffer)
 			add_history(buffer);
+<<<<<<< HEAD
 		ms_builtin(buffer, envp);
+=======
+		if (ms_builtin(buffer) == 0)
+		{
+			free(buffer);
+			return (0);
+		}
+>>>>>>> 9b0c490eeb0a5be38d176aa9b00ab3ad81a9f5eb
 	}
 	free(buffer);
 	return (1);
 }
 
+<<<<<<< HEAD
 void	ms_builtin(char *com, char **envp)
+=======
+int	ms_builtin(char *com)
+>>>>>>> 9b0c490eeb0a5be38d176aa9b00ab3ad81a9f5eb
 {
 	char	**tab;
 
@@ -64,14 +75,21 @@ void	ms_builtin(char *com, char **envp)
 		ms_pwd(&tab[1]);
 	else if (tab[0] && strncmp(tab[0], "cd", 3) == 0)
 		ms_cd(&tab[1]);
+<<<<<<< HEAD
 	else if (tab[0] && strncmp(tab[0], "env", 4) == 0)
 	{
 		ms_env(envp);
+=======
+	else if (tab[0] && strncmp(tab[0], "exit", 5) == 0)
+	{
+		ms_free_chartab(tab);
+		return (0);
+>>>>>>> 9b0c490eeb0a5be38d176aa9b00ab3ad81a9f5eb
 	}
 	else if (tab[0])
 		printf("minishell: %s: command not found\n", tab[0]);
 	ms_free_chartab(tab);
-	return ;
+	return (1);
 }
 /*
 int	main(void)
