@@ -11,13 +11,16 @@ t_list	*create_list_env(char **envp)
 {
 	t_list	*list_env;
 	t_list	*new_elem;
+	char	*content;
 	int	i;
 
 	i = 0;
 	list_env = NULL;
+
 	while (envp[i])
 	{
-		new_elem = ft_lstnew((void *)envp[i]);
+		content = ft_strdup(envp[i]);
+		new_elem = ft_lstnew((void *)content);
 		ft_lstadd_back(&list_env, new_elem);
 		i++;
 	}
@@ -29,6 +32,7 @@ t_list	*create_list_env(char **envp)
 void	ms_env(char **envp)
 {
 	t_list	*list_env;
+	t_list	*first_elem;
 
 	if (!envp)
 	{
@@ -37,11 +41,13 @@ void	ms_env(char **envp)
 	}
 	printf("coucou");
 	list_env = create_list_env(envp);
-	while (list_env->next)
+	first_elem = list_env;
+	while (list_env)
 	{
 		printf("%s\n", (char *)list_env->content);
 		list_env = list_env->next;
 	}
+	ft_lstclear(&first_elem, del);	
 	return ;
 }
 
