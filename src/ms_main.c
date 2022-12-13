@@ -15,8 +15,7 @@
 #include <readline/history.h>
 #include <readline/readline.h>
 
-int	main(int argc, char **argv, char **envp)
-=======
+//int	main(int argc, char **argv, char **envp);
 #include <stdio.h>
 #include <stdlib.h>
 /*
