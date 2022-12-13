@@ -15,12 +15,10 @@
 #include <readline/history.h>
 #include <readline/readline.h>
 
-//int	main(int argc, char **argv, char **envp);
 #include <stdio.h>
 #include <stdlib.h>
-/*
-int	main(void)
->>>>>>> test
+
+int	main(int argc, char **argv, char **envp)
 {
 	t_admin	*adm;
 
@@ -35,7 +33,9 @@ int	main(void)
 int	ms_prompt(t_admin *adm)
 {
 	char	*buffer;
-
+	
+	buffer = malloc(1);
+	buffer[0] = 0;
 	(void)adm;
 	while (ft_strncmp(buffer, "exit", 5))
 	{
@@ -69,7 +69,7 @@ void	ms_builtin(char *com)
 	ms_free_chartab(tab);
 	return ;
 }
-*/
+/*
 int	main(void)
 {
 	char	*buffer = NULL;
@@ -89,4 +89,4 @@ int	main(void)
 	}
 	printf("Bye\n");
 	free(buffer);
-}
+}*/
