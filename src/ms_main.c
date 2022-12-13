@@ -11,11 +11,18 @@
 /* ************************************************************************** */
 
 #include "../I/ft_minishell.h"
+<<<<<<< HEAD
 
 #include <readline/history.h>
 #include <readline/readline.h>
 
 int	main(int argc, char **argv, char **envp)
+=======
+#include <stdio.h>
+#include <stdlib.h>
+/*
+int	main(void)
+>>>>>>> test
 {
 	t_admin	*adm;
 
@@ -63,4 +70,25 @@ void	ms_builtin(char *com)
 		printf("minishell: %s: command not found\n", tab[0]);
 	ms_free_chartab(tab);
 	return ;
+}
+*/
+int	main(void)
+{
+	char	*buffer = NULL;
+	size_t	buffer_size = 2048;
+
+	buffer = (char *)malloc(sizeof(char) * buffer_size);
+	if (!buffer)
+	{
+		perror("Malloc failure");
+		return (EXIT_FAILURE);
+	}
+	write(1, "$> ", 3);
+	while (getline(&buffer, &buffer_size, stdin) > 0)
+	{
+		printf("cmd = %s\n", buffer);
+		write(1, "$> ", 3);
+	}
+	printf("Bye\n");
+	free(buffer);
 }
