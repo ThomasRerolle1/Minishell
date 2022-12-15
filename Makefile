@@ -6,13 +6,13 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 17:19:45 by mravera           #+#    #+#              #
-#    Updated: 2022/12/07 18:42:42 by mravera          ###   ########.fr        #
+#    Updated: 2022/12/15 18:37:48 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g#-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -g3 -fsanitize=address
 LIBS = -L Libft -L$(HOME)/.brew/opt/readline/lib -lft -ledit -lreadline
 RM = rm -rf
 FOLDSRC = ./src/

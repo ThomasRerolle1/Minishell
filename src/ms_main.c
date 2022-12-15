@@ -6,27 +6,20 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/15 16:03:07 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/15 18:39:23 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../I/ft_minishell.h"
 
-#include <readline/history.h>
-#include <readline/readline.h>
-
-#include <stdio.h>
-#include <stdlib.h>
-
 int	main(int argc, char **argv, char **envp)
 {
-	t_admin	*adm;
+	t_admin	adm;
 
-	adm = NULL;
-	(void)envp;
 	(void)argc;
 	(void)argv;
-	ms_prompt(adm);
+	adm.env = ms_create_list_env(envp);
+	ms_prompt(&adm);
 	return (0);
 }
 
@@ -35,7 +28,6 @@ int	ms_prompt(t_admin *adm)
 	char	*buffer;
 
 	buffer = NULL;
-	(void)adm;
 	while (1)
 	{
 		if (buffer != NULL)
@@ -46,7 +38,7 @@ int	ms_prompt(t_admin *adm)
 		buffer = readline("minishell$");
 		if (buffer && *buffer)
 			add_history(buffer);
-		if (ms_builtin(buffer) == 0)
+		if (ms_builtin(buffer, adm) == 0)
 		{
 			free(buffer);
 			return (0);
@@ -56,20 +48,23 @@ int	ms_prompt(t_admin *adm)
 	return (1);
 }
 
-int	ms_builtin(char *com)
+int	ms_builtin(char *com, t_admin *adm)
 {
 	char	**tab;
 
 	tab = ft_split(com, ' ');
-	if (tab[0] && strncmp(tab[0], "echo", 5) == 0)
+	if (tab[0] && ft_strncmp(tab[0], "echo", 5) == 0)
 		ms_echo(&tab[1]);
-	else if (tab[0] && strncmp(tab[0], "pwd", 4) == 0)
+	else if (tab[0] && ft_strncmp(tab[0], "pwd", 4) == 0)
 		ms_pwd(&tab[1]);
-	else if (tab[0] && strncmp(tab[0], "cd", 3) == 0)
+	else if (tab[0] && ft_strncmp(tab[0], "cd", 3) == 0)
 		ms_cd(&tab[1]);
-	else if (tab[0] && strncmp(tab[0], "exit", 5) == 0)
+	else if (tab[0] && ft_strncmp(tab[0], "env", 4) == 0)
+		ms_env(adm->env);
+	else if (tab[0] && ft_strncmp(tab[0], "exit", 5) == 0)
 	{
 		ms_free_chartab(tab);
+		ft_lstclear(&adm->env, del);
 		return (0);
 	}
 	else if (tab[0])
@@ -77,6 +72,7 @@ int	ms_builtin(char *com)
 	ms_free_chartab(tab);
 	return (1);
 }
+
 /*
 int	main(void)
 {

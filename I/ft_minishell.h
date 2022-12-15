@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/15 16:03:15 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/15 18:38:28 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_admin
 
 //ms_main.c
 int		ms_prompt(t_admin *adm);
-int		ms_builtin(char *com);
+int		ms_builtin(char *com, t_admin *adm);
 
 //ms_supersplit.c
 int		ms_supersplit(char *str, t_admin *adm);
@@ -82,6 +82,6 @@ int		ms_pwd(char **str);
 int		ms_cd(char **str);
 
 //ms_env.c
-t_list	*create_list_env(char **envp);
-void	ms_env(char **envp);
+t_list	*ms_create_list_env(char **envp);
+void	ms_env(t_list *env);
 #endif
