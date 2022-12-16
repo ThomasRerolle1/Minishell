@@ -23,13 +23,14 @@ int	main(int argc, char **argv, char **envp)
 	(void)envp;
 	(void)argc;
 	(void)argv;
-	ms_prompt(adm);
+	ms_prompt(adm, envp);
 	return (0);
 }
 
-int	ms_prompt(t_admin *adm)
+int	ms_prompt(t_admin *adm, char **envp)
 {
 	char	*buffer;
+	int		exit_cmd;
 
 	(void)adm;
 	while (ft_strncmp(buffer, "exit", 5))
@@ -42,13 +43,18 @@ int	ms_prompt(t_admin *adm)
 		buffer = readline("minishell$");
 		if (buffer && *buffer)
 			add_history(buffer);
-		ms_builtin(buffer);
+		exit_cmd = ms_builtin(buffer, envp);
+		if (exit_cmd == 0)
+		{
+			free(buffer);
+			return (0);
+		}
 	}
 	free(buffer);
 	return (1);
 }
 
-void	ms_builtin(char *com)
+int	ms_builtin(char *com, char **envp)
 {
 	char	**tab;
 
@@ -59,8 +65,15 @@ void	ms_builtin(char *com)
 		ms_pwd(&tab[1]);
 	else if (tab[0] && strncmp(tab[0], "cd", 3) == 0)
 		ms_cd(&tab[1]);
+	else if (tab[0] && strncmp(tab[0], "env", 4) == 0)
+		ms_env(envp);
+	else if (tab[0] && strncmp(tab[0], "exit", 5) == 0)
+	{
+		ms_free_chartab(tab);
+		return (0);
+	}
 	else if (tab[0])
 		printf("minishell: %s: command not found\n", tab[0]);
 	ms_free_chartab(tab);
-	return ;
+	return (1);
 }
