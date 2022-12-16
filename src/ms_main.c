@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/16 15:05:44 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/16 17:17:29 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv, char **envp)
 	return (0);
 }
 
-int	ms_prompt(t_admin *adm, char **envp)
+int	ms_prompt(t_admin *adm)
 {
 	char	*buffer;
 
@@ -62,7 +62,6 @@ int	ms_builtin(char *com, t_admin *adm)
 	else if (tab[0] && ft_strncmp(tab[0], "env", 4) == 0)
 		ms_env(adm->env);
 	else if (tab[0] && ft_strncmp(tab[0], "exit", 5) == 0)
-
 	{
 		ms_free_chartab(tab);
 		ft_lstclear(&adm->env, del);
