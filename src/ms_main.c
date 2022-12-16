@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/15 18:39:23 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/16 15:05:44 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ms_builtin(char *com, t_admin *adm)
 	else if (tab[0] && ft_strncmp(tab[0], "pwd", 4) == 0)
 		ms_pwd(&tab[1]);
 	else if (tab[0] && ft_strncmp(tab[0], "cd", 3) == 0)
-		ms_cd(&tab[1]);
+		ms_cd(&tab[1], adm);
 	else if (tab[0] && ft_strncmp(tab[0], "env", 4) == 0)
 		ms_env(adm->env);
 	else if (tab[0] && ft_strncmp(tab[0], "exit", 5) == 0)

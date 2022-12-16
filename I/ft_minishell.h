@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/15 18:38:28 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/16 16:05:55 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ int		ms_sizeof_word(char *str);
 void	ms_free_chartab(char **tab);
 int		ms_strlen_tab(char **tab);
 
+//ms_utils_ii
+char	*ms_new_pwd(char *old_pwd);
+
 //builtins
 //ms_echo.c
 int		ms_echo(char **str);
@@ -79,9 +82,10 @@ int		ms_pre_echo(char **str, int *opt);
 int		ms_pwd(char **str);
 
 //ms_cd.c
-int		ms_cd(char **str);
+int		ms_cd(char **str, t_admin *adm);
 
 //ms_env.c
 t_list	*ms_create_list_env(char **envp);
 void	ms_env(t_list *env);
+
 #endif
