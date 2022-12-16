@@ -23,7 +23,7 @@ int	main(int argc, char **argv, char **envp)
 	return (0);
 }
 
-int	ms_prompt(t_admin *adm)
+int	ms_prompt(t_admin *adm, char **envp)
 {
 	char	*buffer;
 
@@ -62,6 +62,7 @@ int	ms_builtin(char *com, t_admin *adm)
 	else if (tab[0] && ft_strncmp(tab[0], "env", 4) == 0)
 		ms_env(adm->env);
 	else if (tab[0] && ft_strncmp(tab[0], "exit", 5) == 0)
+
 	{
 		ms_free_chartab(tab);
 		ft_lstclear(&adm->env, del);
