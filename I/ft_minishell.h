@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/16 16:05:55 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/16 18:54:36 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int		ms_strlen_tab(char **tab);
 
 //ms_utils_ii
 char	*ms_new_pwd(char *old_pwd);
+char	*ms_new_oldpwd(char *old_pwd);
 
 //builtins
 //ms_echo.c
@@ -83,9 +84,11 @@ int		ms_pwd(char **str);
 
 //ms_cd.c
 int		ms_cd(char **str, t_admin *adm);
+int		ms_cd_update_env(t_list *env, char *old);
 
 //ms_env.c
 t_list	*ms_create_list_env(char **envp);
+int		ms_setup_env(t_list *env);
 void	ms_env(t_list *env);
 
 #endif
