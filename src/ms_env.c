@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:04:16 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/16 18:55:41 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/16 19:04:34 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	ms_env(t_list *env)
 	}
 	while (env)
 	{
-		printf("%s\n", (char *)env->content);
+		if (ft_strchr((char *)env->content, '='))
+			printf("%s\n", (char *)env->content);
 		env = env->next;
 	}
 	return ;
