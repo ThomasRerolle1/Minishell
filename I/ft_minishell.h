@@ -57,13 +57,8 @@ typedef struct s_admin
 }	t_admin;
 
 //ms_main.c
-<<<<<<< HEAD
 int		ms_prompt(t_admin *adm, char **envp);
-void	ms_builtin(char *com, char **envp);
-=======
-int		ms_prompt(t_admin *adm);
-int		ms_builtin(char *com);
->>>>>>> 9b0c490eeb0a5be38d176aa9b00ab3ad81a9f5eb
+int		ms_builtin(char *com, char **envp);
 
 //ms_supersplit.c
 int		ms_supersplit(char *str, t_admin *adm);

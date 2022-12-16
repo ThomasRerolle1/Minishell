@@ -33,6 +33,7 @@ int	main(int argc, char **argv, char **envp)
 int	ms_prompt(t_admin *adm, char **envp)
 {
 	char	*buffer;
+	int		exit_cmd;
 
 	buffer = NULL;
 	(void)adm;
@@ -46,25 +47,18 @@ int	ms_prompt(t_admin *adm, char **envp)
 		buffer = readline("minishell$");
 		if (buffer && *buffer)
 			add_history(buffer);
-<<<<<<< HEAD
-		ms_builtin(buffer, envp);
-=======
-		if (ms_builtin(buffer) == 0)
+		exit_cmd = ms_builtin(buffer, envp);
+		if (exit_cmd == 0)
 		{
 			free(buffer);
 			return (0);
 		}
->>>>>>> 9b0c490eeb0a5be38d176aa9b00ab3ad81a9f5eb
 	}
 	free(buffer);
 	return (1);
 }
 
-<<<<<<< HEAD
-void	ms_builtin(char *com, char **envp)
-=======
-int	ms_builtin(char *com)
->>>>>>> 9b0c490eeb0a5be38d176aa9b00ab3ad81a9f5eb
+int	ms_builtin(char *com, char **envp)
 {
 	char	**tab;
 
@@ -75,16 +69,12 @@ int	ms_builtin(char *com)
 		ms_pwd(&tab[1]);
 	else if (tab[0] && strncmp(tab[0], "cd", 3) == 0)
 		ms_cd(&tab[1]);
-<<<<<<< HEAD
 	else if (tab[0] && strncmp(tab[0], "env", 4) == 0)
-	{
 		ms_env(envp);
-=======
 	else if (tab[0] && strncmp(tab[0], "exit", 5) == 0)
 	{
 		ms_free_chartab(tab);
 		return (0);
->>>>>>> 9b0c490eeb0a5be38d176aa9b00ab3ad81a9f5eb
 	}
 	else if (tab[0])
 		printf("minishell: %s: command not found\n", tab[0]);
