@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/16 21:19:50 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/19 20:45:29 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,26 @@ int	ms_prompt(t_admin *adm)
 
 int	ms_builtin(char *com, t_admin *adm)
 {
-	char	**tab;
-
-	tab = ft_split(com, ' ');
-	if (tab[0] && ft_strncmp(tab[0], "echo", 5) == 0)
-		ms_echo(&tab[1]);
-	else if (tab[0] && ft_strncmp(tab[0], "pwd", 4) == 0)
-		ms_pwd(&tab[1]);
-	else if (tab[0] && ft_strncmp(tab[0], "cd", 3) == 0)
-		ms_cd(&tab[1], adm);
-	else if (tab[0] && ft_strncmp(tab[0], "env", 4) == 0)
+	adm->comtab = ft_split(com, ' ');
+	if (adm->comtab[0] && ft_strncmp(adm->comtab[0], "echo", 5) == 0)
+		ms_echo(&adm->comtab[1]);
+	else if (adm->comtab[0] && ft_strncmp(adm->comtab[0], "pwd", 4) == 0)
+		ms_pwd(&adm->comtab[1]);
+	else if (adm->comtab[0] && ft_strncmp(adm->comtab[0], "cd", 3) == 0)
+		ms_cd(&adm->comtab[1], adm);
+	else if (adm->comtab[0] && ft_strncmp(adm->comtab[0], "env", 4) == 0)
 		ms_env(adm->env);
-	else if (tab[0] && ft_strncmp(tab[0], "exit", 5) == 0)
+	else if (adm->comtab[0] && ft_strncmp(adm->comtab[0], "export", 4) == 0)
+		ms_export(&adm->comtab[1], &adm->env);
+	else if (adm->comtab[0] && ft_strncmp(adm->comtab[0], "exit", 5) == 0)
 	{
-		ms_free_chartab(tab);
+		ms_free_chartab(adm->comtab);
 		ft_lstclear(&adm->env, del);
 		return (0);
 	}
-	else if (tab[0])
-		printf("minishell: %s: command not found\n", tab[0]);
-	ms_free_chartab(tab);
+	else if (adm->comtab[0])
+		printf("minishell: %s: command not found\n", adm->comtab[0]);
+	ms_free_chartab(adm->comtab);
 	return (1);
 }
 
