@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 16:04:16 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/19 21:33:59y mravera          ###   ########.fr       */
+/*   Created: 2022/12/20 12:12:46 by mravera           #+#    #+#             */
+/*   Updated: 2022/12/20 12:14:24 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,41 +63,4 @@ void	ms_env(t_list *env)
 		env = env->next;
 	}
 	return ;
-}
-
-int	ms_setvar(char *var, t_list **env)
-{
-	char	*equal;
-	char	*trim;
-	t_list	*f;
-
-	f = *env;
-	trim = ms_trimenv(var);
-	equal = ft_strjoin(trim, "=");
-	while (f)
-	{
-		if (ft_strncmp((char *)f->content, trim, ft_strlen(trim) + 1) == 0)
-		{
-			free(trim);
-			free(equal);
-			return (1);
-		}
-		if (ft_strncmp((char *)f->content, equal, ft_strlen(equal)) == 0)
-			return (ms_swap_content(f, var, trim, equal));
-		f = f->next;
-	}
-	free(trim);
-	free(equal);
-	equal = ft_strdup(var);
-	ft_lstadd_back(env, ft_lstnew((void *)equal));
-	return (1);
-}
-
-int	ms_swap_content(t_list *f, char *str, char *trim, char *equal)
-{
-	free(trim);
-	free(equal);
-	free(f->content);
-	f->content = (void *)ft_strdup(str);
-	return (1);
 }
