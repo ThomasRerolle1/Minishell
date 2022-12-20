@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 17:00:54 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/19 20:54:07 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/20 18:15:27 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ms_display_all(t_list *env)
 {
 	while (env)
 	{
-		printf("%s\n", (char *)env->content);
+		printf("declare -x %s\n", (char *)env->content);
 		env = env->next;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/20 12:15:36 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/20 18:41:59 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,9 @@ void	ms_env(t_list *env);
 
 //ms_setvar.c
 int		ms_setvar(char *var, t_list **env);
-int		ms_swap_content(t_list *f, char *str, char *trim, char *equal);
 char	*ms_trimenv(char *str);
+int		ms_free_noswap(char *trim, char *equal);
+int		ms_swap_content(t_list *f, char *str, char *trim, char *equal);
 
 //ms_export.c
 int		ms_export(char **var, t_list **env);
