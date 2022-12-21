@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:13:58 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/20 18:41:25 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/21 14:19:17 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ms_setvar(char *var, t_list **env)
 	while (f)
 	{
 		if (ft_strncmp((char *)f->content, trim, ft_strlen(trim) + 1) == 0
-			&& ft_strlen(var) > ft_strlen(trim))
+			&& ft_strlen(var) >= ft_strlen(trim))
 			return (ms_swap_content(f, var, trim, equal));
 		if (ft_strncmp((char *)f->content, equal, ft_strlen(equal)) == 0)
 			if (ft_strlen(var) > ft_strlen(trim))

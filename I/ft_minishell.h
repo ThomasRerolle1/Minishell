@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/20 18:41:59 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/21 15:36:16 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_admin
 //ms_main.c
 int		ms_prompt(t_admin *adm);
 int		ms_builtin(char *com, t_admin *adm);
+void	ms_bonjour(void);
 
 //ms_supersplit.c
 int		ms_supersplit(char *str, t_admin *adm);
@@ -100,5 +101,7 @@ int		ms_swap_content(t_list *f, char *str, char *trim, char *equal);
 //ms_export.c
 int		ms_export(char **var, t_list **env);
 int		ms_display_all(t_list *env);
+int		ms_check_identifier(char *str);
+char	*ms_arg_inquote(char *str);
 
 #endif

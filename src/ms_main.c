@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/20 12:16:05 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/21 13:53:48 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
+	ms_bonjour();
 	adm.env = ms_create_list_env(envp);
 	ms_prompt(&adm);
 	return (0);
@@ -35,7 +36,7 @@ int	ms_prompt(t_admin *adm)
 			free(buffer);
 			buffer = NULL;
 		}
-		buffer = readline("minishell$");
+		buffer = readline("minishell-0.5$ ");
 		if (buffer && *buffer)
 			add_history(buffer);
 		if (ms_builtin(buffer, adm) == 0)
@@ -73,24 +74,11 @@ int	ms_builtin(char *com, t_admin *adm)
 	return (1);
 }
 
-/*
-int	main(void)
+void	ms_bonjour(void)
 {
-	char	*buffer = NULL;
-	size_t	buffer_size = 2048;
-
-	buffer = (char *)malloc(sizeof(char) * buffer_size);
-	if (!buffer)
-	{
-		perror("Malloc failure");
-		return (EXIT_FAILURE);
-	}
-	write(1, "$> ", 3);
-	while (getline(&buffer, &buffer_size, stdin) > 0)
-	{
-		printf("cmd = %s\n", buffer);
-		write(1, "$> ", 3);
-	}
-	printf("Bye\n");
-	free(buffer);
-}*/
+	printf("\nYou are using our lite version of bash called Minishell.");
+	printf("\nTo update your account to use zsh, please don't run ");
+	printf("'chsh -s /bin/zsh' as it will not do anything at all.\n");
+	printf("For more details, please don't visit https://support.apple.com\n");
+	return ;
+}
