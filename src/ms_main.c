@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/21 13:53:48 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/21 18:53:32 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ int	ms_builtin(char *com, t_admin *adm)
 		ms_cd(&adm->comtab[1], adm);
 	else if (adm->comtab[0] && ft_strncmp(adm->comtab[0], "env", 4) == 0)
 		ms_env(adm->env);
-	else if (adm->comtab[0] && ft_strncmp(adm->comtab[0], "export", 4) == 0)
+	else if (adm->comtab[0] && ft_strncmp(adm->comtab[0], "export", 7) == 0)
 		ms_export(&adm->comtab[1], &adm->env);
+	else if (adm->comtab[0] && ft_strncmp(adm->comtab[0], "unset", 6) == 0)
+		ms_unset(&adm->comtab[1], &adm->env);
 	else if (adm->comtab[0] && ft_strncmp(adm->comtab[0], "exit", 5) == 0)
 	{
 		ms_free_chartab(adm->comtab);
