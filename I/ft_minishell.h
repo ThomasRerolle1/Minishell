@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/21 18:51:26 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/22 16:03:52 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ int		ms_check_identifier(char *str);
 char	*ms_arg_inquote(char *str);
 
 //ms_unset.c
-int		ms_unset(char **var, t_list **env);
-int		ms_unsetone(char *var, t_list **env);
+int		ms_unset(char **var, t_admin *adm);
+int		ms_unsetone(char *var, t_admin *adm);
+t_list	*ms_delone_relink(t_list *dead, t_admin *adm);
 
 #endif
