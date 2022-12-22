@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/16 21:14:53 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/22 16:03:52 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_admin
 //ms_main.c
 int		ms_prompt(t_admin *adm);
 int		ms_builtin(char *com, t_admin *adm);
+void	ms_bonjour(void);
 
 //ms_supersplit.c
 int		ms_supersplit(char *str, t_admin *adm);
@@ -90,6 +91,22 @@ int		ms_cd_update_env(t_list *env, char *old);
 t_list	*ms_create_list_env(char **envp);
 int		ms_setup_env(t_list *env);
 void	ms_env(t_list *env);
-int		ms_setvar(char *var, t_list *env);
+
+//ms_setvar.c
+int		ms_setvar(char *var, t_list **env);
+char	*ms_trimenv(char *str);
+int		ms_free_noswap(char *trim, char *equal);
+int		ms_swap_content(t_list *f, char *str, char *trim, char *equal);
+
+//ms_export.c
+int		ms_export(char **var, t_list **env);
+int		ms_display_all(t_list *env);
+int		ms_check_identifier(char *str);
+char	*ms_arg_inquote(char *str);
+
+//ms_unset.c
+int		ms_unset(char **var, t_admin *adm);
+int		ms_unsetone(char *var, t_admin *adm);
+t_list	*ms_delone_relink(t_list *dead, t_admin *adm);
 
 #endif
