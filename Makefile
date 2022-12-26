@@ -6,13 +6,13 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 17:19:45 by mravera           #+#    #+#              #
-#    Updated: 2022/12/22 16:41:35 by mravera          ###   ########.fr        #
+#    Updated: 2022/12/26 12:21:34 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -g3 -fsanitize=address
 LIBS = -L Libft -L$(HOME)/.brew/opt/readline/lib -lft -ledit -lreadline
 RM = rm -rf
 FOLDSRC = ./src/
@@ -26,7 +26,8 @@ SRC = ms_main.c \
 			ms_env.c \
 			ms_export.c \
 			ms_setvar.c \
-			ms_unset.c
+			ms_unset.c \
+			ms_alphaprint.c
 
 OBJS = $(addprefix $(FOLDSRC), $(SRC:.c=.o))
 
@@ -38,6 +39,7 @@ UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
 	NPROC := $(shell nproc)
 	CC = clang
+	LIBS = -L Libft -L$(HOME)/.brew/opt/readline/lib -lft -lreadline -ltinfo
 else
 	NPROC := $(shell sysctl -n hw.ncpu)
 	CFLAGS += -I$(HOME)/.brew/opt/readline/include

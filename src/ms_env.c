@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:12:46 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/20 12:14:24 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/27 00:32:47 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,13 @@ int	ms_setup_env(t_list *env)
 
 void	ms_env(t_list *env)
 {
-	t_list	*first_elem;
-
-	first_elem = env;
 	if (!env)
 	{
 		printf("Error in ms_env\n");
 		perror(NULL);
 	}
+	ms_alphaprint(env);
+	return ;
 	while (env)
 	{
 		if (ft_strchr((char *)env->content, '='))

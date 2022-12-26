@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/22 16:03:52 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/26 12:22:35 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ int		ms_cd_update_env(t_list *env, char *old);
 t_list	*ms_create_list_env(char **envp);
 int		ms_setup_env(t_list *env);
 void	ms_env(t_list *env);
+
+//ms_alphaprint.c
+int		ms_alphaprint(t_list *env);
+t_list	*ms_biginlist(t_list *a);
 
 //ms_setvar.c
 int		ms_setvar(char *var, t_list **env);
