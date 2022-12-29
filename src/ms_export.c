@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 17:00:54 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/21 18:50:12 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/29 16:40:57 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ int	ms_export(char **var, t_list **env)
 	while (var[i])
 	{
 		if (!ms_check_identifier(var[i]))
-		{
 			printf("minishell: export: not a valid identifier\n");
-			return (0);
-		}
-		ms_setvar(var[i], env);
+		else
+			ms_setvar(var[i], env);
 		i++;
 	}
 	return (1);

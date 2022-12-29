@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 20:11:15 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/26 23:21:20 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/29 16:28:38 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ int	ms_alphaprint(t_list *env)
 	t_list	*big;
 
 	(void)big;
-	return (printf("biginlist = %s\n", (char *)ms_biginlist(env)->content));
 	if (env == NULL)
 		return (1);
 	big = ms_biginlist(env);
+	printf("Biginlist = %s\n", (char *)big->content);
 	if (env->next == NULL)
 		return (1);
+	return (1);
 }
 
 t_list	*ms_biginlist(t_list *a)
