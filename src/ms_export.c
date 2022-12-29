@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 17:00:54 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/29 16:40:57 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/29 20:01:42 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,22 @@ int	ms_display_all(t_list *env)
 				free(buf);
 		}
 		env = env->next;
+	}
+	return (1);
+}
+
+int	ms_display_one(t_list *env)
+{
+	char	*buf;
+
+	if (!ft_strchr(env->content, '='))
+		printf("declare -x %s\n", (char *)env->content);
+	else
+	{
+		buf = ms_arg_inquote((char *)env->content);
+		printf("declare -x %s\n", buf);
+		if (buf != NULL)
+			free(buf);
 	}
 	return (1);
 }
