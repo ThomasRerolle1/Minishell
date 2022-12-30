@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../I/ft_minishell.h"
-
+/*
 int	main(int argc, char **argv, char **envp)
 {
 	t_admin	adm;
@@ -23,7 +23,7 @@ int	main(int argc, char **argv, char **envp)
 	ms_prompt(&adm);
 	return (0);
 }
-
+*/
 int	ms_prompt(t_admin *adm)
 {
 	char	*buffer;

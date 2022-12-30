@@ -26,7 +26,10 @@ SRC = ms_main.c \
 			ms_env.c \
 			ms_export.c \
 			ms_setvar.c \
-			ms_unset.c
+			ms_unset.c \
+			ms_get_substr.c \
+			ms_truncate_line.c \
+			ms_token.c
 
 OBJS = $(addprefix $(FOLDSRC), $(SRC:.c=.o))
 

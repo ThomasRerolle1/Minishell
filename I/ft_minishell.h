@@ -40,10 +40,28 @@
    |-->la fonction doit etre appelee une fois par argument
 -> char *options == options demandees
 */
+# define TOKEN_NULL 0
+# define TOKEN_SPACE 1
+# define TOKEN_REDIRECTION 2
+# define TOKEN_DOUBLE_QUOTE 3
+# define TOKEN_SINGLE_QUOTE 4
+# define TOKEN_WORD 5
+
+typedef struct s_token{
+	void	*content;
+	char	*raw_content;
+	int		type_of_content;
+	struct s_token	*next;
+	struct s_token	*prev;
+}	t_token;
+
+
 typedef struct s_command
 {
 	char	*command;
 	char	**arg;
+	struct	s_command	*next;
+	struct	s_command	*prev;
 }	t_command;
 
 typedef struct s_admin
@@ -109,4 +127,20 @@ int		ms_unset(char **var, t_admin *adm);
 int		ms_unsetone(char *var, t_admin *adm);
 t_list	*ms_delone_relink(t_list *dead, t_admin *adm);
 
+//ft_get_substr.c
+int		is_separator(char c);
+char	*ft_substr_word_space(char *line);
+char	*ft_substr_quote(char *line);
+char	*ft_substr_redirection(char *line);
+char	*ft_get_substr(char *line);
+
+//ms_token.c
+t_token	*create_token(void);
+void	fill_token(t_token *token, char *substr);
+t_token	*token_last(t_token *first_token);
+void	token_add_back(t_token **first_token, t_token *new_token);
+void	create_fill_add_token(t_token **first_token_in_list, char *raw_content);
+
+//ms_truncate_line.c
+char	*ms_truncate_line(char *line, char *substr);
 #endif
