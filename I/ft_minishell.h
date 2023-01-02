@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/22 16:03:52 by mravera          ###   ########.fr       */
+/*   Updated: 2022/12/29 20:02:28 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int		ms_strlen_tab(char **tab);
 //ms_utils_ii
 char	*ms_new_pwd(char *old_pwd);
 char	*ms_new_oldpwd(char *old_pwd);
+int		ms_lstcomp(t_list *a, t_list *b);
 
 //builtins
 //ms_echo.c
@@ -92,6 +93,12 @@ t_list	*ms_create_list_env(char **envp);
 int		ms_setup_env(t_list *env);
 void	ms_env(t_list *env);
 
+//ms_alphaprint.c
+int		ms_alphaprint(t_list *env);
+t_list	*ms_biginlist(t_list *a);
+t_list	*ms_smallinlst(t_list *a);
+int		ms_recprint(t_list *top, t_list *env);
+
 //ms_setvar.c
 int		ms_setvar(char *var, t_list **env);
 char	*ms_trimenv(char *str);
@@ -101,6 +108,7 @@ int		ms_swap_content(t_list *f, char *str, char *trim, char *equal);
 //ms_export.c
 int		ms_export(char **var, t_list **env);
 int		ms_display_all(t_list *env);
+int		ms_display_one(t_list *env);
 int		ms_check_identifier(char *str);
 char	*ms_arg_inquote(char *str);
 
