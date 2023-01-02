@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:07:34 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/29 19:21:16 by mravera          ###   ########.fr       */
+/*   Updated: 2023/01/02 17:10:36 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int	ms_lstcomp(t_list *a, t_list *b)
 
 	buf = ms_trimenv((char *)a->content);
 	if (ft_strncmp((char *)a->content, (char *)b->content,
-			ft_strlen(buf)) > 0)
+			ft_strlen(buf) + 1) > 0)
 		res = 1;
 	else if (ft_strncmp((char *)a->content, (char *)b->content,
-			ft_strlen(buf)) < 0)
+			ft_strlen(buf) + 1) < 0)
 		res = -1;
 	else
 		res = 0;

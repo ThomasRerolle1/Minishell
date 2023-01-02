@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:12:46 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/29 16:35:54 by mravera          ###   ########.fr       */
+/*   Updated: 2023/01/02 17:27:05 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_list	*ms_create_list_env(char **envp)
 
 	i = 0;
 	list_env = NULL;
-	while (envp[i] && i == 0)
+	while (envp[i])
 	{
 		content = ft_strdup(envp[i]);
 		new_elem = ft_lstnew((void *)content);
@@ -50,8 +50,6 @@ void	ms_env(t_list *env)
 {
 	if (!env)
 		printf("Error, env seems empty.\n");
-	ms_alphaprint(env);
-	return ;
 	while (env)
 	{
 		if (ft_strchr((char *)env->content, '='))

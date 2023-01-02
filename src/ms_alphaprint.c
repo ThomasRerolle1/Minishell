@@ -5,27 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 20:11:15 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/29 20:02:12 by mravera          ###   ########.fr       */
+/*   Created: 2023/01/02 16:58:04 by mravera           #+#    #+#             */
+/*   Updated: 2023/01/02 17:25:23 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../I/ft_minishell.h"
 
+void	cmpall(t_list *env)
+{
+	t_list	*t;
+	t_list	*origin;
+
+	origin = env;
+	t = origin;
+	while (env)
+	{
+		while (t)
+		{
+			printf("lstcmp(%s, %s) = %d\n", (char *)env->content,
+				(char *)t->content, ms_lstcomp(env, t));
+			t = t->next;
+		}
+		t = origin;
+		env = env->next;
+	}
+}
+
 int	ms_alphaprint(t_list *env)
 {
 	t_list	*big;
-	t_list	*small;
 
 	if (env == NULL)
 		return (1);
 	big = ms_biginlist(env);
-	small = ms_smallinlst(env);
-	printf("Biginlist = %s\n", (char *)big->content);
-	printf("Smallinlist = %s\n", (char *)small->content);
-	ms_recprint(big,env);
-	if (env->next == NULL)
-		return (1);
+	ms_recprint(big, env);
 	return (1);
 }
 
@@ -71,7 +85,14 @@ int	ms_recprint(t_list *top, t_list *env)
 	t_list	*big;
 
 	t = env;
-	big = env;
+	big = t;
+	while (t && (ms_lstcomp(t, top) >= 0))
+	{
+		big = t;
+		t = t->next;
+	}
+	if (t)
+		big = t;
 	while (t)
 	{
 		if (ms_lstcomp(t, big) == 1

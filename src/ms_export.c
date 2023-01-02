@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 17:00:54 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/29 20:01:42 by mravera          ###   ########.fr       */
+/*   Updated: 2023/01/02 17:27:39 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ms_export(char **var, t_list **env)
 
 	i = 0;
 	if (var[i] == NULL)
-		return (ms_display_all(*env));
+		return (ms_alphaprint(*env));
 	while (var[i])
 	{
 		if (!ms_check_identifier(var[i]))
