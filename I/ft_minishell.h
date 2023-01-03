@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/29 20:02:28 by mravera          ###   ########.fr       */
+/*   Updated: 2023/01/03 05:39:24 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-//# include <termios.h>
-//# include <signal.h>
+# include <termios.h>
+# include <signal.h>
 //# include <dirent.h>
 # include <readline/history.h>
 # include <readline/readline.h>
@@ -116,5 +116,9 @@ char	*ms_arg_inquote(char *str);
 int		ms_unset(char **var, t_admin *adm);
 int		ms_unsetone(char *var, t_admin *adm);
 t_list	*ms_delone_relink(t_list *dead, t_admin *adm);
+
+//ms_setsig.c
+int		ms_setsig(void);
+void	ms_int_handler(int sign);
 
 #endif

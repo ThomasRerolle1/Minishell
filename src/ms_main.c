@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/22 15:58:10 by mravera          ###   ########.fr       */
+/*   Updated: 2023/01/03 05:41:03 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	ms_bonjour();
+	ms_setsig();
+	//ms_bonjour();
 	adm.env = ms_create_list_env(envp);
 	ms_prompt(&adm);
 	return (0);
@@ -39,7 +40,7 @@ int	ms_prompt(t_admin *adm)
 		buffer = readline("minishell-0.5$ ");
 		if (buffer && *buffer)
 			add_history(buffer);
-		if (ms_builtin(buffer, adm) == 0)
+		if (!buffer || (ms_builtin(buffer, adm) == 0))
 		{
 			free(buffer);
 			return (0);

@@ -6,7 +6,7 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 17:19:45 by mravera           #+#    #+#              #
-#    Updated: 2022/12/26 12:21:34 by mravera          ###   ########.fr        #
+#    Updated: 2023/01/03 05:26:22 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,12 @@ SRC = ms_main.c \
 			ms_export.c \
 			ms_setvar.c \
 			ms_unset.c \
-			ms_alphaprint.c
+			ms_alphaprint.c \
+			ms_setsig.c
 
 OBJS = $(addprefix $(FOLDSRC), $(SRC:.c=.o))
 
-.o: %.c
-	$(CC) -Wall -Wextra -Werror -c -g3 -fsanitise=address $< -o $@
+
 
 UNAME = $(shell uname -s)
 
@@ -44,6 +44,9 @@ else
 	NPROC := $(shell sysctl -n hw.ncpu)
 	CFLAGS += -I$(HOME)/.brew/opt/readline/include
 endif
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@ 
 
 $(NAME) : $(OBJS)
 	#$(MAKE) -C Libft
