@@ -6,14 +6,14 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 17:19:45 by mravera           #+#    #+#              #
-#    Updated: 2023/01/03 05:26:22 by mravera          ###   ########.fr        #
+#    Updated: 2023/01/03 21:29:15 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -g3 -fsanitize=address
-LIBS = -L Libft -L$(HOME)/.brew/opt/readline/lib -lft -ledit -lreadline
+LIBS = -L Libft -L$(HOME)/.brew/opt/readline/lib -lft -ledit -lreadline -lhistory
 RM = rm -rf
 FOLDSRC = ./src/
 SRC = ms_main.c \
@@ -28,7 +28,8 @@ SRC = ms_main.c \
 			ms_setvar.c \
 			ms_unset.c \
 			ms_alphaprint.c \
-			ms_setsig.c
+			ms_setsig.c \
+			ms_exec.c
 
 OBJS = $(addprefix $(FOLDSRC), $(SRC:.c=.o))
 

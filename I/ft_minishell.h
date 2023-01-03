@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2023/01/03 05:39:24 by mravera          ###   ########.fr       */
+/*   Updated: 2023/01/03 21:29:13 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_admin
 	char		*out;
 	char		*err;
 	t_list		*env;
+	int			loop;
 }	t_admin;
 
 //ms_main.c
@@ -120,5 +121,9 @@ t_list	*ms_delone_relink(t_list *dead, t_admin *adm);
 //ms_setsig.c
 int		ms_setsig(void);
 void	ms_int_handler(int sign);
+
+//ms_exec.c
+int		ms_exec(t_admin	*adm);
+int		ms_exec2(void);
 
 #endif

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 17:32:50 by mravera           #+#    #+#             */
-/*   Updated: 2023/01/03 05:41:03 by mravera          ###   ########.fr       */
+/*   Created: 2023/01/03 21:21:55 by mravera           #+#    #+#             */
+/*   Updated: 2023/01/03 21:26:54 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	ms_setsig();
-	//ms_bonjour();
 	adm.env = ms_create_list_env(envp);
+	ms_setsig();
+	ms_bonjour();
 	ms_prompt(&adm);
 	return (0);
 }
@@ -30,6 +30,7 @@ int	ms_prompt(t_admin *adm)
 	char	*buffer;
 
 	buffer = NULL;
+	(void) adm;
 	while (1)
 	{
 		if (buffer != NULL)
