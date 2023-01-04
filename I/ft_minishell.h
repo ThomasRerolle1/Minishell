@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2023/01/03 21:29:13 by mravera          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:47:24 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_admin
 //ms_main.c
 int		ms_prompt(t_admin *adm);
 int		ms_builtin(char *com, t_admin *adm);
-void	ms_bonjour(void);
+void	ms_bonjour(t_admin *adm);
 
 //ms_supersplit.c
 int		ms_supersplit(char *str, t_admin *adm);
@@ -69,7 +69,7 @@ int		ms_supersplit(char *str, t_admin *adm);
 int		ms_issep(int c);
 int		ms_isspace(int c);
 int		ms_sizeof_word(char *str);
-void	ms_free_chartab(char **tab);
+int		ms_free_chartab(char **tab);
 int		ms_strlen_tab(char **tab);
 
 //ms_utils_ii
@@ -118,6 +118,10 @@ int		ms_unset(char **var, t_admin *adm);
 int		ms_unsetone(char *var, t_admin *adm);
 t_list	*ms_delone_relink(t_list *dead, t_admin *adm);
 
+//ms_exit.c
+int		ms_exit(t_admin *adm, int exit);
+int		ms_exitfree(char *tofree, t_admin *adm, int exit);
+
 //ms_setsig.c
 int		ms_setsig(void);
 void	ms_int_handler(int sign);
@@ -125,5 +129,8 @@ void	ms_int_handler(int sign);
 //ms_exec.c
 int		ms_exec(t_admin	*adm);
 int		ms_exec2(void);
+
+//test
+void	rl_replace_line(const char *text, int clear_undo);
 
 #endif

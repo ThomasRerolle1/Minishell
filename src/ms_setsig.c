@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 03:06:05 by mravera           #+#    #+#             */
-/*   Updated: 2023/01/03 21:27:57 by mravera          ###   ########.fr       */
+/*   Updated: 2023/01/04 18:01:10 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ms_setsig(void)
 {
-	static struct termios	termios_p;
-	static struct sigaction	act_int;
-	static struct sigaction	act_quit;
+	struct termios		termios_p;
+	struct sigaction	act_int;
+	struct sigaction	act_quit;
 
 	if (tcgetattr(0, &termios_p) != 0)
 		return (1);
@@ -28,8 +28,7 @@ int	ms_setsig(void)
 	act_int.sa_flags = SA_RESTART;
 	sigfillset(&act_int.sa_mask);
 	act_quit.sa_handler = SIG_IGN;
-	if (sigaction(SIGQUIT, &act_quit, NULL) != 0
-		|| sigaction(SIGINT, &act_int, NULL) != 0)
+	if (sigaction(SIGINT, &act_int, NULL) != 0)
 		return (1);
 	return (0);
 }
@@ -38,7 +37,7 @@ void	ms_int_handler(int sign)
 {
 	(void)sign;
 	write(1, "\n", 1);
-	//rl_on_new_line();
-	//rl_replace_line("", 0);
-	//rl_redisplay();
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 }
