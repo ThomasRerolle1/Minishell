@@ -30,9 +30,10 @@ int	main(int argc, char **argv, char **envp)
 	return (0);
 }
 
-int	ms_prompt(t_admin *adm)
+int	ms_prompt(t_admin *adm, char **envp)
 {
 	char	*buffer;
+	int		exit_cmd;
 
 	buffer = NULL;
 	while (adm->loop == 1)
