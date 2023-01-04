@@ -1,58 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_utils.c                                         :+:      :+:    :+:   */
+/*   ms_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 15:45:22 by mravera           #+#    #+#             */
-/*   Updated: 2023/01/04 17:31:41 by mravera          ###   ########.fr       */
+/*   Created: 2023/01/04 12:46:13 by mravera           #+#    #+#             */
+/*   Updated: 2023/01/04 18:14:33 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../I/ft_minishell.h"
 
-int	ms_isspace(int c)
+int	ms_exit(t_admin *adm, int exit)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
+	if (exit)
+		printf("exit\n");
+	adm->loop = 0;
+	ft_lstclear(&adm->env, &free);
 	return (0);
 }
 
-int	ms_issep(int c)
+int	ms_exitfree(char *tofree, t_admin *adm, int exit)
 {
-	if (c == '|' || c == '<' || c == '>')
-		return (1);
+	free(tofree);
+	if (exit)
+		printf("exit\n");
+	adm->loop = 0;
+	ft_lstclear(&adm->env, &free);
 	return (0);
-}
-
-int	ms_sizeof_word(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && (ms_isspace(str[i]) == 0))
-		i++;
-	return (i);
-}
-
-int	ms_free_chartab(char **tab)
-{
-	size_t	i;
-
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-	return (0);
-}
-
-int	ms_strlen_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		i++;
-	return (i);
 }

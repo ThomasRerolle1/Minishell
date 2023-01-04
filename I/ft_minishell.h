@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/12/12 17:30:40 by mravera          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:47:24 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-//# include <termios.h>
-//# include <signal.h>
+# include <termios.h>
+# include <signal.h>
 //# include <dirent.h>
 # include <readline/history.h>
 # include <readline/readline.h>
@@ -54,11 +54,13 @@ typedef struct s_admin
 	char		*out;
 	char		*err;
 	t_list		*env;
+	int			loop;
 }	t_admin;
 
 //ms_main.c
-int		ms_prompt(t_admin *adm, char **envp);
-int		ms_builtin(char *com, char **envp);
+int		ms_prompt(t_admin *adm);
+int		ms_builtin(char *com, t_admin *adm);
+void	ms_bonjour(t_admin *adm);
 
 //ms_supersplit.c
 int		ms_supersplit(char *str, t_admin *adm);
@@ -67,8 +69,13 @@ int		ms_supersplit(char *str, t_admin *adm);
 int		ms_issep(int c);
 int		ms_isspace(int c);
 int		ms_sizeof_word(char *str);
-void	ms_free_chartab(char **tab);
+int		ms_free_chartab(char **tab);
 int		ms_strlen_tab(char **tab);
+
+//ms_utils_ii
+char	*ms_new_pwd(char *old_pwd);
+char	*ms_new_oldpwd(char *old_pwd);
+int		ms_lstcomp(t_list *a, t_list *b);
 
 //builtins
 //ms_echo.c
@@ -79,6 +86,51 @@ int		ms_pre_echo(char **str, int *opt);
 int		ms_pwd(char **str);
 
 //ms_cd.c
-int		ms_cd(char **str);
+int		ms_cd(char **str, t_admin *adm);
+int		ms_cd_update_env(t_list *env, char *old);
+
+//ms_env.c
+t_list	*ms_create_list_env(char **envp);
+int		ms_setup_env(t_list *env);
+void	ms_env(t_list *env);
+
+//ms_alphaprint.c
+int		ms_alphaprint(t_list *env);
+t_list	*ms_biginlist(t_list *a);
+t_list	*ms_smallinlst(t_list *a);
+int		ms_recprint(t_list *top, t_list *env);
+
+//ms_setvar.c
+int		ms_setvar(char *var, t_list **env);
+char	*ms_trimenv(char *str);
+int		ms_free_noswap(char *trim, char *equal);
+int		ms_swap_content(t_list *f, char *str, char *trim, char *equal);
+
+//ms_export.c
+int		ms_export(char **var, t_list **env);
+int		ms_display_all(t_list *env);
+int		ms_display_one(t_list *env);
+int		ms_check_identifier(char *str);
+char	*ms_arg_inquote(char *str);
+
+//ms_unset.c
+int		ms_unset(char **var, t_admin *adm);
+int		ms_unsetone(char *var, t_admin *adm);
+t_list	*ms_delone_relink(t_list *dead, t_admin *adm);
+
+//ms_exit.c
+int		ms_exit(t_admin *adm, int exit);
+int		ms_exitfree(char *tofree, t_admin *adm, int exit);
+
+//ms_setsig.c
+int		ms_setsig(void);
+void	ms_int_handler(int sign);
+
+//ms_exec.c
+int		ms_exec(t_admin	*adm);
+int		ms_exec2(void);
+
+//test
+void	rl_replace_line(const char *text, int clear_undo);
 
 #endif

@@ -13,7 +13,7 @@
 CC = gcc
 NAME = libft.a
 
-LIB_DIR = ./sources/
+LIB_DIR = sources/
 LIB_PRINTF = ./Printf_srcs/
 LIB_GNL = ./gnl_srcs/
 
@@ -52,7 +52,7 @@ CFILES_LIB = ft_atoi.c \
 	  ft_tolower.c \
 	  ft_toupper.c
 
-CFILES_BONUS = $(SRC_LIB) \
+CFILES_BONUS = $(CFILES_LIB) \
 			ft_lstnew.c \
 			ft_lstsize.c \
 			ft_lstadd_front.c \
@@ -66,6 +66,9 @@ CFILES_BONUS = $(SRC_LIB) \
 SRC_LIB = $(addprefix $(LIB_DIR), $(CFILES_LIB))
 SRC_BONUS = $(addprefix $(LIB_DIR), $(CFILES_BONUS))
 
+.o: %.c
+	$(CC) -Wall -Wextra -Werror -c -g3 -fsanitise=address $< -o $@
+
 OBJ_LIB = $(SRC_LIB:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
@@ -75,7 +78,7 @@ OBJ_PRINTF = $(SRC_PRINTF:%.c=%.o)
 SRC_GNL = $(wildcard $(LIB_GNL)*.c)
 OBJ_GNL = $(SRC_GNL:%.c=%.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 
 all : $(NAME)
